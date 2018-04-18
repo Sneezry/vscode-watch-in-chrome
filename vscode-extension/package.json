@@ -2,7 +2,7 @@
     "name": "watch-in-chrome",
     "displayName": "Watch in Chrome",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "sneezry",
     "engines": {
         "vscode": "^1.22.0"
@@ -18,7 +18,7 @@
         "onCommand:vscode-watchinchrome.watch"
     ],
     "main": "./out/extension",
-    "logo": "watch-in-chrome.png",
+    "icon": "watch-in-chrome.png",
     "contributes": {
         "commands": [
             {
