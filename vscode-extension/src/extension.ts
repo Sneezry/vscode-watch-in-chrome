@@ -34,7 +34,11 @@ function watchDocument(documentPath: string, rootPath: string, serverList: Array
     serverList.push({rootPath, server});
   }
 
-  const relativePath = documentPath.substr(rootPath.length);
+  let relativePath = documentPath.substr(rootPath.length);
+  relativePath = relativePath.replace(/\\\\/g, '/').replace(/\\/g, '/');
+  if (relativePath.substr(0, 1) === '/') {
+    relativePath = relativePath.substr(1);
+  }
   const url = `http://127.0.0.1:${server.port}/${relativePath}`;
   vscode.commands.executeCommand(
     'vscode.open', vscode.Uri.parse(url));
@@ -99,7 +103,11 @@ export function activate(context: vscode.ExtensionContext) {
     const docPath = event.document.uri.fsPath;
     for (let i = 0; i < serverList.length; i++) {
       if (docPath.indexOf(serverList[i].rootPath) === 0) {
-        const relativePath = docPath.substr(serverList[i].rootPath.length);
+        let relativePath = docPath.substr(serverList[i].rootPath.length);
+        relativePath = relativePath.replace(/\\\\/g, '/').replace(/\\/g, '/');
+        if (relativePath.substr(0, 1) === '/') {
+          relativePath = relativePath.substr(1);
+        }
         const url = `http://127.0.0.1:${serverList[i].server.port}/${relativePath}`;
 
         let queued = false;
