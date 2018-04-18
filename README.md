@@ -1,3 +1,5 @@
+<img src="chrome-extension/watch-in-chrome.png" width="128" height="128" align="right">
+
 # Watch in Chrome
 
 Edit HTML in VS Code and watch changes in Chrome.
